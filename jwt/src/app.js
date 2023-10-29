@@ -1,19 +1,15 @@
 import express from 'express';
 import jwt from "jsonwebtoken";
 import cors from "cors";
-import { pool } from './db.js';
+// import {pool} from './db.js';
+import { PORT } from './config.js';
 
 const app=express()
-const port=3001
+// const PORT= 3001
 
 //middleware
 app.use(express.json())
 app.use(cors())
-
-app.get('/create', async (req, res) => {
-    const result = await pool.query('INSERT INTO users (name, password) VALUES("pedro", "123")')
-    res.json(result)
-})
 
 app.get('/api',(req,res)=>{
     res.json({
@@ -36,11 +32,8 @@ app.post('/usuario/login',(req,res)=>{
             res.json({ message: "inicio exitoso", user, token})
         })
     } else {
-        res.status(401).send('Usuario o contraseña incorrecta');
+        res.status(401).send('Usuario o Contraseña incorrecta');
     }
-    
-    
-    
 })
 
 app.post('/api/login',(req,res)=>{
@@ -68,6 +61,7 @@ app.post('/api/protected',verifyToken,(req,res)=>{
     })
     
 })
+
 function verifyToken(req,res,next){
     const bearerHeader=req.headers['authorization']
     
@@ -82,5 +76,5 @@ function verifyToken(req,res,next){
     }
 }
 
-app.listen(port)
-console.log(`Server running on port ${port}`)
+app.listen(PORT)
+console.log(`Server running on port ${PORT}`)
