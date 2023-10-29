@@ -1,7 +1,7 @@
 import express from "express";
 import jwt from "jsonwebtoken";
 import cors from "cors";
-import { pool } from "./src/db"
+// import { pool } from "./db"
 const app=express()
 const port=3001
 
