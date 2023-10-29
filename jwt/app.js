@@ -1,7 +1,7 @@
 import express from "express";
 import jwt from "jsonwebtoken";
 import cors from "cors";
-
+import { pool } from "./src/db"
 const app=express()
 const port=3001
 
@@ -78,3 +78,8 @@ function verifyToken(req,res,next){
 
 app.listen(port)
 console.log(`Server running on port ${port}`)
+
+app.get('/create', async (req, res) => {
+    const result = await pool.query('INSERT INTO users (name, password) VALUES("pedro", "123")')
+    res.json(result)
+})
