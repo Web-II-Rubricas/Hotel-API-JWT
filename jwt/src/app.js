@@ -1,13 +1,19 @@
-import express from "express";
+import express from 'express';
 import jwt from "jsonwebtoken";
 import cors from "cors";
-// import { pool } from "./db"
+import { pool } from './db.js';
+
 const app=express()
 const port=3001
 
 //middleware
 app.use(express.json())
 app.use(cors())
+
+app.get('/create', async (req, res) => {
+    const result = await pool.query('INSERT INTO users (name, password) VALUES("pedro", "123")')
+    res.json(result)
+})
 
 app.get('/api',(req,res)=>{
     res.json({
@@ -78,8 +84,3 @@ function verifyToken(req,res,next){
 
 app.listen(port)
 console.log(`Server running on port ${port}`)
-
-// app.get('/create', async (req, res) => {
-//     const result = await pool.query('INSERT INTO users (name, password) VALUES("pedro", "123")')
-//     res.json(result)
-// })
