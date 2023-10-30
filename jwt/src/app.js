@@ -1,7 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 
-import usuariosRoutes from "./routes/usuarios.routes.js";
+import usuariosRoutes from "./routes/users.routes.js";
 import indexRoutes from "./routes/index.routes.js";
 
 const app = express();
