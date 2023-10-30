@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { loco,prueba } from "../controllers/index.controller.js";
+import { loco,prueba } from "../controllers/index.controllers.js";
 
 
 const router=Router()
