@@ -5,8 +5,8 @@ import './Login.css';
 
 const Login = () => {
   const [datos, setDatos] = useState({
-    usuario:"",
-    clave:""
+    users:"",
+    Contraseña:""
   })
 
   const handleInputChange = (e) =>{
@@ -19,7 +19,7 @@ const Login = () => {
     if(!e.target.checkValidity()){
       console.log("no enviar")
     } else {
-      const res = await axios.post("http://localhost:3001/usuario/login",datos)
+      const res = await axios.post("http://localhost:3001/api/users/login",datos)
       console.log(res.data)
     }
 
@@ -34,7 +34,7 @@ const Login = () => {
             id="username"
             name="usuario"
             onChange={handleInputChange}
-            value={datos.usuario}
+            value={datos.users}
           />
           <input
             type="password"
@@ -42,7 +42,7 @@ const Login = () => {
             id="password"
             name="clave"
             onChange={handleInputChange}
-            value={datos.clave}
+            value={datos.Contraseña}
           />
           <button type="submit">Login</button>
         </form>
