@@ -38,7 +38,8 @@ const Login = () => {
     console.log(res.data)
     })
     .catch((error) => {
-    console.error("Error en la solicitud:", error);
+    console.log('Credenciales incorrectas: ' + error.Login);
+    // console.error("Error en la solicitud:", error);
     });
     }
   }
