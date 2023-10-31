@@ -1,7 +1,5 @@
-import { json } from "express";
 import jwt from "jsonwebtoken";
 import { pool } from "../db.js";
-import bcrypt from "bcrypt";
 
 export const getUsers = async (req, res) => {
   try {
@@ -18,15 +16,12 @@ export const usuarioLogin = async (req, res) => {
   try {
     const name = req.body.name;
     const Contraseña = req.body.Contraseña;
-    // Consulta la base de datos para encontrar al usuario con el nombre proporcionado
     const [result] = await pool.query('SELECT * FROM users WHERE name = ?', [name]);
 
     if (result.length === 0) {
       res.status(401).send("Usuario no encontrado");
     } else {
-      //  res.json({message:'Usuario encontrado', result})
       const users = result[0];
-      //  res.json({users})
       if (Contraseña == users.Contraseña) {
         jwt.sign({ users },"secretkey",{ expiresIn: "100s" },(error, token) => {
           if (error) {

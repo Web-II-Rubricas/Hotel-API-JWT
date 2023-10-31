@@ -19,5 +19,4 @@ router.post('/users/protected', verifyToken, (req,res)=>{
     })
 })
 
-
 export default router
