@@ -1,0 +1,41 @@
+  .rooms-container {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+  }
+  
+  .rooms-container h1 {
+    margin: 0 0 20px;
+  }
+  
+  .rooms-container label {
+    font-weight: bold;
+  }
+  
+  .rooms-container input {
+    padding: 10px;
+    margin: 5px 0 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  .rooms-container button {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .rooms-container button.update-button {
+    background-color: #007bff; /* Verde */
+  }
+  
+  .rooms-container button.delete-button {
+    background-color: #ff0000; /* Rojo */
+  }

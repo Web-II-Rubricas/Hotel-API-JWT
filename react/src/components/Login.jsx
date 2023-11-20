@@ -48,6 +48,7 @@ const Login = () => {
         <div className="login-container">
         <h1>Login</h1>
         <form onSubmit={handleSubmit}>
+        <div className="input-group">
           <input
             type="text"
             placeholder="Username"
@@ -64,6 +65,7 @@ const Login = () => {
             onChange={handleInputChange}
             value={datos.Contraseña}
           />
+        </div>
           <button type="submit">Login</button>
         </form>
       </div>
