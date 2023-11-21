@@ -5,6 +5,7 @@ import './Rooms.css';
 
 const Rooms = () => {
   const [datos, setDatos] = useState({
+      id: "",
       numero:"",
       tipo:"",
       valor:""
@@ -20,7 +21,21 @@ const Rooms = () => {
     if(!e.target.checkValidity()){
       console.log("no enviar")
     } else {
-      const res = await axios.post('http://localhost:3001/api/users/login',datos)
+      const res = await axios.post('http://localhost:5000/api/rooms',datos) //post
+    .then((res) => {
+    console.log(res.data)
+    })
+    .catch((error) => {
+    console.log('Credenciales incorrectas: ' + error.Rooms);
+    });
+    }
+  }
+  const handleUpdate = async(e) =>{
+    e.preventDefault();
+    if(!e.target.checkValidity()){
+      console.log("no enviar")
+    } else {
+      const res = await axios.patch(`http://localhost:5000/api/rooms/${datos.id}`,datos) //
     .then((res) => {
     console.log(res.data)
     })
@@ -30,18 +45,9 @@ const Rooms = () => {
     }
   }
 
-  const handleUpdate = async () => {
-    try {
-      const res = await axios.patch('http://localhost:3001/api/rooms/:id', datos); // Replace :id with the actual room ID
-      console.log('Updated:', res.data);
-    } catch (error) {
-      console.log('Error updating:', error.response.data.message);
-    }
-  };
-
   const handleDelete = async () => {
-    try {
-      const res = await axios.delete('http://localhost:3001/api/rooms/:id'); // Replace :id with the actual room ID
+    try { 
+      const res = await axios.delete(`http://localhost:5000/api/rooms/${datos.id}`); // delete codigo
       console.log('Deleted:', res.data);
     } catch (error) {
       console.log('Error deleting:', error.response.data.message);
@@ -53,8 +59,16 @@ const Rooms = () => {
         <h1>Rooms</h1>
         <form onSubmit={handleSubmit}>
         <div className="input-group">
-          <input
+        <input
             type="text"
+            placeholder="ID habitacion"
+            id="id"
+            name="id"
+            onChange={handleInputChange}
+            value={datos.id}
+          />
+          <input
+          type="number"
             placeholder="Numero habitacion"
             id="numero"
             name="numero"
@@ -79,9 +93,9 @@ const Rooms = () => {
           />
         </div>
           <button type="submit">crear</button>
-          <button onClick={handleUpdate} className="update-button">Actualizar</button>
-          <button onClick={handleDelete} className="delete-button">Eliminar</button>
         </form>
+        <button onClick={handleUpdate} className="update-button">Actualizar</button>
+        <button onClick={handleDelete} className="delete-button">Eliminar</button>
 
       <table className="room-table">
         <thead>
