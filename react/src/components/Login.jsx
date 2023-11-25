@@ -35,7 +35,9 @@ const Login = () => {
       const res = await axios.post('http://localhost:5000/api/users/login',datos)
 
     .then((res) => {
+    // res.redirect('/usersAdmin');
     console.log(res.data)
+    // res.redirect('/usersAdmin');
     })
     .catch((error) => {
     console.log('Credenciales incorrectas: ' + error.Login);

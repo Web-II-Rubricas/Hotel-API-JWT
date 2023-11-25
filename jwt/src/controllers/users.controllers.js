@@ -1,5 +1,9 @@
 import jwt from "jsonwebtoken";
 import { pool } from "../db.js";
+// import  Rooms from '../react/src/components/Rooms.jsx'
+
+
+// const Adminview = require('../react/src/Adminview')
 
 export const getUsers = async (req, res) => {
   try {
@@ -16,22 +20,49 @@ export const usuarioLogin = async (req, res) => {
   try {
     const name = req.body.name;
     const Contraseña = req.body.Contraseña;
-    const [result] = await pool.query('SELECT * FROM users WHERE name = ?', [name]);
+    const [result] = await pool.query("SELECT * FROM users WHERE name = ?", [
+      name,
+    ]);
 
     if (result.length === 0) {
       res.status(401).send("Usuario no encontrado");
     } else {
       const users = result[0];
+
       if (Contraseña == users.Contraseña) {
-        jwt.sign({ users },"secretkey",{ expiresIn: "100s" },(error, token) => {
-          if (error) {
-            res.status(500).send("Error al generar el token");
-          } else {
-            res.cookie("token", token, { httpOnly: true });
-            res.json({ message: "inicio exitoso", users, token });
-          }
-        });
-      }else{
+        if (users.rol === "admin") {
+          jwt.sign(
+            { users },
+            "secretkey",
+            { expiresIn: "100s" },
+            (error, token) => {
+              if (error) {
+                res.status(500).send("Error al generar el token");
+              } else {
+                res.cookie("token", token, { httpOnly: true });
+                res.json({ message: "inicio exitoso", users, token });
+              }
+            }
+          );
+          // console.log(users)
+          // res.redirect('/usersAdmin');
+        } else if (users.rol === "usuario");{
+          // jwt.sign(
+          //   { users },
+          //   "secretkey",
+          //   { expiresIn: "100s" },
+          //   (error, token) => {
+          //     if (error) {
+          //       res.status(500).send("Error al generar el token");
+          //     } else {
+          //       res.cookie("token", token, { httpOnly: true });
+          //       res.json({ message: "inicio exitoso", users, token });
+          //     }
+          //   }
+          // );
+          // res.redirect('/ruta...');
+        }
+      } else {
         res.status(401).json({ error: "Credenciales inválidas" });
       }
     }

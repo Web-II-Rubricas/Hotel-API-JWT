@@ -1,23 +1,31 @@
 import { Router } from "express";
-import { getUsers, usuarioLogin, verifyToken} from "../controllers/users.controllers.js";
-import jwt from 'jsonwebtoken'; 
+import {getUsers,usuarioLogin,verifyToken,
+} from "../controllers/users.controllers.js";
+import jwt from "jsonwebtoken";
+import Adminview from 'main'
 
-const router=Router()
+const router = Router();
 
-router.get('/users',getUsers)
+router.get("/users", getUsers);
 
-router.post('/users/login',usuarioLogin)
+router.post("/users/login", usuarioLogin);
 
-router.post('/users/protected', verifyToken, (req,res)=>{
-    jwt.verify(req.token,'secretkey',(error,authData)=>{
-        if (error) {
-            res.sendStatus(403)
-        } else {
-            res.json({
-                message:"Acceso a ruta protegida",authData
-            })
-        }
-    })
-})
+router.post("/users/protected", verifyToken, (req, res) => {
+  jwt.verify(req.token, "secretkey", (error, authData) => {
+    if (error) {
+      res.sendStatus(403);
+    } else {
+      res.json({
+        message: "Acceso a ruta protegida",
+        authData,
+      });
+    }
+  });
+});
 
-export default router
+router.get("/usersAdmin", (req, res) => {
+    
+  res.render(Adminview);
+});
+
+export default router;

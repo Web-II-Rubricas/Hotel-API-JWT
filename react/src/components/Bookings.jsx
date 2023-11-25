@@ -1,11 +1,12 @@
 import React from "react";
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import axios from "axios";  
 import './Login.css'; 
 
 const Bookings = () => {
   const [reservas, setReservas] = useState([]);
   const [datos, setDatos] = useState({
+    codigoH: '',
     nombre: '',
     telefono: '',
     fechaEntrada: '',
@@ -43,13 +44,16 @@ const Bookings = () => {
       <ul>
         {reservas.map(reserva => (
           <li key={reserva.codigo}>
-            {reserva.nombre_cliente} - {reserva.fecha_entrada} - {reserva.fecha_salida}
+            {reserva.codigo_habitacion} - {reserva.nombre_cliente} - {reserva.telefono_cliente} - {reserva.fecha_entrada} - {reserva.fecha_salida}
           </li>
         ))}
       </ul>
 
       {/* Formulario para realizar una nueva reserva */}
       <form onSubmit={handleReservaSubmit}>
+      <label>Numero de habitacion:</label>
+        <input type="text" name="habitacion" onChange={handleInputChange} />
+
         <label>Nombre:</label>
         <input type="text" name="nombre" onChange={handleInputChange} />
 
@@ -67,4 +71,4 @@ const Bookings = () => {
     </div>
   );
 };
- export default Bookings;
+export default Bookings;

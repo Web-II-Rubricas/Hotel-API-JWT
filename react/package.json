@@ -1,5 +1,6 @@
 {
   "name": "login-node-react-jwt",
+  "main": "src/main.jsx",
   "private": true,
   "version": "0.0.0",
   "type": "module",
