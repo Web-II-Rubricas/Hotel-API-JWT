@@ -21,7 +21,7 @@ const Rooms = () => {
     if(!e.target.checkValidity()){
       console.log("no enviar")
     } else {
-      const res = await axios.post('http://localhost:5000/api/rooms',datos) //post
+      const res = await axios.post('http://localhost:5000/api/rooms',datos)
     .then((res) => {
     console.log(res.data)
     })
@@ -35,7 +35,7 @@ const Rooms = () => {
     if(!e.target.checkValidity()){
       console.log("no enviar")
     } else {
-      const res = await axios.patch(`http://localhost:5000/api/rooms/${datos.id}`,datos) //
+      const res = await axios.patch(`http://localhost:5000/api/rooms/${datos.id}`,datos)
     .then((res) => {
     console.log(res.data)
     })
@@ -47,7 +47,7 @@ const Rooms = () => {
 
   const handleDelete = async () => {
     try { 
-      const res = await axios.delete(`http://localhost:5000/api/rooms/${datos.id}`); // delete codigo
+      const res = await axios.delete(`http://localhost:5000/api/rooms/${datos.id}`);
       console.log('Deleted:', res.data);
     } catch (error) {
       console.log('Error deleting:', error.response.data.message);
