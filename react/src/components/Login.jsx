@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from 'react';
 import axios from "axios";  
 import './Login.css'; 
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [datos, setDatos] = useState({
@@ -27,6 +28,7 @@ const Login = () => {
     setDatos ({...datos, [name]: value});
   }
 
+  const navigate = useNavigate();
   const handleSubmit = async(e) =>{
     e.preventDefault();
     if(!e.target.checkValidity()){
@@ -36,6 +38,7 @@ const Login = () => {
 
     .then((res) => {
     // res.redirect('/usersAdmin');
+      navigate('/home')
     console.log(res.data)
     // res.redirect('/usersAdmin');
     })

@@ -1,13 +1,15 @@
 import { useState } from 'react'
-import './App.css'
+import './Login.css'
 import Bookings from './Bookings'
 import Rooms from './Rooms'
+import Navbar from './Navbar'
 
-function App() {
+function Adminview() {
 const [count, setCount] = useState(0)
 
 return (
-    <>  
+    <>
+    <Navbar/>
     <Bookings/>
     <Rooms/>
     </>
@@ -15,4 +17,4 @@ return (
 
 }
 
-export default App
+export default Adminview

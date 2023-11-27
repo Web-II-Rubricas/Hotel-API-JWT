@@ -1,18 +1,19 @@
 import { useState } from 'react'
-import './Login.css'
-import Bookings from './Bookings'
+import './Navbar.css'
 import Navbar from './Navbar'
 
-function Usersview() {
+function Home() {
 const [count, setCount] = useState(0)
 
 return (
     <>  
     <Navbar/>
-    <Bookings/>
+        <div>
+        <h1>Bienvenido</h1>
+      </div>
     </>
 )
 
 }
 
-export default Usersview
+export default Home
