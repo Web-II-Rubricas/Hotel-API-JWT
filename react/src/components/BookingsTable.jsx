@@ -19,7 +19,7 @@ const BookingsTable = () => {
       <ul>
         {reservas.map(reserva => (
           <li key={reserva.codigo}>
-            {reserva.codigo_habitacion} - {reserva.nombre_cliente} - {reserva.telefono_cliente} - {reserva.fecha_entrada} - {reserva.fecha_salida}
+            {reserva.codigo_habitacion} - {reserva.nombre_cliente} - {reserva.telefono_cliente} -{reserva.fecha_entrada} - {reserva.fecha_salida}
           </li>
         ))}
       </ul>

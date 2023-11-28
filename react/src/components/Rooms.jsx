@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from 'react';
 import axios from "axios";  
 import './Rooms.css'; 
+import RoomsTable from "./RoomsTable";
 
 const Rooms = () => {
   const [datos, setDatos] = useState({
@@ -97,22 +98,7 @@ const Rooms = () => {
         <button onClick={handleUpdate} className="update-button">Actualizar</button>
         <button onClick={handleDelete} className="delete-button">Eliminar</button>
 
-      <table className="room-table">
-        <thead>
-          <tr>
-            <th>Numero</th>
-            <th>Tipo</th>
-            <th>Valor</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Suite</td>
-            <td>$100</td>
-          </tr>
-        </tbody>
-      </table>
+      <RoomsTable/>
 
       </div>
     )
