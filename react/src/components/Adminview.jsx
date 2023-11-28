@@ -3,7 +3,6 @@ import "./Login.css";
 import Bookings from "./Bookings";
 import Rooms from "./Rooms";
 import Navbar from "./Navbar";
-import BookingsTable from "./BookingsTable.jsx";
 import "./Adminview.css"
 
 function Adminview() {
