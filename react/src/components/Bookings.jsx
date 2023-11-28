@@ -3,6 +3,7 @@ import { useState,useEffect } from 'react';
 import axios from "axios";  
 import './Login.css'; 
 
+
 const Bookings = () => {
   const [reservas, setReservas] = useState([]);
   const [datos, setDatos] = useState({
@@ -13,12 +14,12 @@ const Bookings = () => {
     fechaSalida: '',
   });
 
-  useEffect(() => {
-    // Realiza una solicitud al backend para obtener la lista de reservas
-    axios.get('http://localhost:5000/bookings')
-      .then(response => setReservas(response.data))
-      .catch(error => console.error('Error al obtener las reservas', error));
-  }, []);
+  // useEffect(() => {
+  //   // Realiza una solicitud al backend para obtener la lista de reservas
+  //   axios.get('http://localhost:5000/bookings')
+  //     .then(response => setReservas(response.data))
+  //     .catch(error => console.error('Error al obtener las reservas', error));
+  // }, []);
 
   const handleInputChange = (e) => {
     setDatos({ ...datos, [e.target.name]: e.target.value });
@@ -39,15 +40,7 @@ const Bookings = () => {
   return (
     <div>
       <h1>Reservas</h1>
-
-      {/* Mostrar la lista de reservas */}
-      <ul>
-        {reservas.map(reserva => (
-          <li key={reserva.codigo}>
-            {reserva.codigo_habitacion} - {reserva.nombre_cliente} - {reserva.telefono_cliente} - {reserva.fecha_entrada} - {reserva.fecha_salida}
-          </li>
-        ))}
-      </ul>
+     
 
       {/* Formulario para realizar una nueva reserva */}
       <form onSubmit={handleReservaSubmit}>
