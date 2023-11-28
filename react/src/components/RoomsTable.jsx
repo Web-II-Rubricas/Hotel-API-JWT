@@ -7,7 +7,7 @@ const RoomsTable = () => {
     const [habitaciones, setHabitaciones] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/rooms')
+        axios.get('http://localhost:5000/api/rooms')
           .then(response => setHabitaciones(response.data))
           .catch(error => console.error('Error al obtener las habitaciones', error));
       }, []);
@@ -18,7 +18,7 @@ const RoomsTable = () => {
       <ul>
         {habitaciones.map(habitacion => (
           <li key={habitacion.id}>
-            {habitacion.numero} - {habitacion.tipo} - {habitacion.valor}
+            {habitacion.id} - {habitacion.numero} - {habitacion.tipo} - {habitacion.valor}
           </li>
         ))}
       </ul>
