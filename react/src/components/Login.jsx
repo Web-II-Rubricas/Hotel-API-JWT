@@ -3,7 +3,7 @@ import { useState } from 'react';
 import axios from "axios";  
 import './Login.css'; 
 import { useNavigate } from "react-router-dom";
-import {useUser} from '../Context/UserContext'
+// import {useUser} from '../Context/UserContext'
 
 
 const Login = () => {
@@ -12,11 +12,11 @@ const Login = () => {
       Contraseña:""
     })
 
-  const {setUser,setRol, setUserInfo } = useUser();
-  const handleGuardarDatos = () => {
-    // Guardar datos en localStorage
-    localStorage.setItem('misDatos', JSON.stringify(datos));
-  };
+  // const {setUser,setRol, setUserInfo } = useUser();
+  // const handleGuardarDatos = () => {
+  //   // Guardar datos en localStorage
+  //   localStorage.setItem('misDatos', JSON.stringify(datos));
+  // };
 
   // const [serverStatus, setServerStatus] = useState(''); // Estado para almacenar el estado del servidor
 
@@ -46,12 +46,12 @@ const Login = () => {
       const res = await axios.post('http://localhost:5000/api/users/login',datos)
 
     .then((res) => {
-    const username = res.data.users.name
+    // const username = res.data.users.name
     // setUser(username)
-    const roles = res.data.users.rol
+    // const roles = res.data.users.rol
     // setRol(roles)
     // const { username, roles } = res.data;
-      setUserInfo(username, roles);
+      // setUserInfo(username, roles);
     // localStorage.setItem('datos', res.data)
 
     navigate('/home')
