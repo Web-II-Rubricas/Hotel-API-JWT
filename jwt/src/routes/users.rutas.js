@@ -23,9 +23,4 @@ router.post("/users/protected", verifyToken, (req, res) => {
   });
 });
 
-router.get("/usersAdmin", (req, res) => {
-    
-  res.render(Adminview);
-});
-
 export default router;

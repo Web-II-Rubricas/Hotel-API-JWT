@@ -7,14 +7,14 @@
   align-items: center;
 }
 
-.navbar-links {
+.navbar-links,a {
   list-style: none;
   display: flex;
   margin: 0;
   padding: 0;
 }
 
-.navbar-link {
+.navbar-link,a {
   color: white;
   text-decoration: none;
   margin: 0 10px;

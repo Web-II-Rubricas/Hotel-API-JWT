@@ -44,23 +44,20 @@ export const usuarioLogin = async (req, res) => {
               }
             }
           );
-          // console.log(users)
-          // res.redirect('/usersAdmin');
         } else if (users.rol === "usuario");{
-          // jwt.sign(
-          //   { users },
-          //   "secretkey",
-          //   { expiresIn: "100s" },
-          //   (error, token) => {
-          //     if (error) {
-          //       res.status(500).send("Error al generar el token");
-          //     } else {
-          //       res.cookie("token", token, { httpOnly: true });
-          //       res.json({ message: "inicio exitoso", users, token });
-          //     }
-          //   }
-          // );
-          // res.redirect('/ruta...');
+          jwt.sign(
+            { users },
+            "secretkey",
+            { expiresIn: "100s" },
+            (error, token) => {
+              if (error) {
+                res.status(500).send("Error al generar el token");
+              } else {
+                res.cookie("token", token, { httpOnly: true });
+                res.json({ message: "inicio exitoso", users, token });
+              }
+            }
+          );
         }
       } else {
         res.status(401).json({ error: "Credenciales inválidas" });
