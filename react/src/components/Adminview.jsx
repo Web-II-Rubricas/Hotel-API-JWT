@@ -20,7 +20,6 @@ function Adminview() {
             <Rooms />
         </div>
         <div className="admin-view">
-            <BookingsTable />
         </div>
       </section>
     </>

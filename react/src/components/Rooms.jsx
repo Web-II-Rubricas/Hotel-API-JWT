@@ -1,16 +1,22 @@
 import React from "react";
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import axios from "axios";  
 import './Rooms.css'; 
-import RoomsTable from "./RoomsTable";
 
 const Rooms = () => {
+  const [habitaciones, setHabitaciones] = useState([]);
   const [datos, setDatos] = useState({
       id: "",
       numero:"",
       tipo:"",
       valor:""
     })
+
+  useEffect(() => {
+      axios.get('http://localhost:5000/api/rooms')
+        .then(response => setHabitaciones(response.data))
+        .catch(error => console.error('Error al obtener las habitaciones', error));
+  }, []);
 
   const handleInputChange = (e) =>{
     const { name, value } = e.target;
@@ -98,7 +104,14 @@ const Rooms = () => {
         <button onClick={handleUpdate} className="update-button">Actualizar</button>
         <button onClick={handleDelete} className="delete-button">Eliminar</button>
 
-      <RoomsTable/>
+        <h1>Lista Habitaciones</h1>
+      <ul>
+        {habitaciones.map(habitacion => (
+          <li key={habitacion.id}>
+            {habitacion.id} - {habitacion.numero} - {habitacion.tipo} - {habitacion.valor}
+          </li>
+        ))}
+      </ul>
 
       </div>
     )

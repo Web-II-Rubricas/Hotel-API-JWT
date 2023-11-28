@@ -14,12 +14,11 @@ const Bookings = () => {
     fechaSalida: '',
   });
 
-  // useEffect(() => {
-  //   // Realiza una solicitud al backend para obtener la lista de reservas
-  //   axios.get('http://localhost:5000/bookings')
-  //     .then(response => setReservas(response.data))
-  //     .catch(error => console.error('Error al obtener las reservas', error));
-  // }, []);
+  useEffect(() => {
+    axios.get('http://localhost:5000/bookings')
+      .then(response => setReservas(response.data))
+      .catch(error => console.error('Error al obtener las reservas', error));
+  }, []);
 
   const handleInputChange = (e) => {
     setDatos({ ...datos, [e.target.name]: e.target.value });
@@ -40,7 +39,6 @@ const Bookings = () => {
   return (
     <div>
       <h1>Reservas</h1>
-     
 
       {/* Formulario para realizar una nueva reserva */}
       <form onSubmit={handleReservaSubmit}>
@@ -61,6 +59,15 @@ const Bookings = () => {
 
         <button type="submit">Reservar</button>
       </form>
+      <h1>Lista Reservas</h1>
+      <ul>
+        {reservas.map(reserva => (
+          <li key={reserva.codigo}>
+            {reserva.codigo_habitacion} - {reserva.nombre_cliente} - {reserva.telefono_cliente} -{reserva.fecha_entrada} - {reserva.fecha_salida}
+          </li>
+        ))}
+      </ul>
+
     </div>
   );
 };
