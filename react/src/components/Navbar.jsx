@@ -1,14 +1,10 @@
 import { useState, useEffect } from 'react'
 import './Navbar.css'
-import {useUser} from '../Context/UserContext'
-// import login from './Login.jsx'
+import {useUser} from '../Context/UserContext.jsx'
 
 function Navbar() {
 const [count, setCount] = useState(0)
-// const {roles,username}= useUser()
-
-// const {userData}= useUser()
-// const { username, roles } = userData;
+const {roles,username}= useUser()
 
 return (
     <>  
@@ -19,7 +15,7 @@ return (
                 <li><a href="/vista-usuario" className="navbar-link">Usuario</a></li>
                 <li><a href="/" className="navbar-link">Cerrar Sesion</a></li>            
             </ul>
-            {/* <a >Nombre: {username}  -  Rol: {roles}</a> */}
+            <a >Nombre: {username}  -  Rol: {roles}</a>
 
         </nav>
     </>

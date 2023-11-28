@@ -7,30 +7,20 @@ export const useUser = () => {
 };
 
 export const UserProvider = ({ children }) => {
-  // const [username, setUsername] = useState('');
-  // const [roles, setRoles] = useState('');
-  const [userData, setUserData] = useState({
-    username: '',
-    roles: '',
-  });
+  const [username, setUsername] = useState('');
+  const [roles, setRoles] = useState('');
 
-//   const setUser = (name) => {
-//     setUsername(name);
-//   };
+  const setUser = (name) => {
+    setUsername(name);
+  };
 
-// const setRol = (rol) => { 
-//   setRoles(rol);
-// };
-
-const setUserInfo = (username, roles) => {
-  setUserData({ username, roles });
+const setRol = (rol) => { 
+  setRoles(rol);
 };
 
   return (
-    <UserProvider value={{ userData, setUserInfo }}>
+    <UserContext.Provider value={{ username, setUser, roles, setRol}}>
       {children}
-    </UserProvider>
+    </UserContext.Provider>
   );
 };
-
-// username, setUser, roles, setRol, 
